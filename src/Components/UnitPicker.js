@@ -16,7 +16,8 @@ const styles = theme => ({
   input: {
     display: 'flex',
     padding: 0,
-    width:300,
+    width:200,
+    height:32,
   },
   valueContainer: {
     display: 'flex',
@@ -131,10 +132,12 @@ const COMPONENT_NAME = ({
   //PROPS
     //required
       units,//temperature or volume
+    //optional//
+
     //derived
-      options,optionTypes,
+      options,optionTypes,isControlled,controlledValue,
   //STATE
-    value,handleSelectChange,
+    stateValue,handleSelectChange,
   //OTHER
     classes,...props
 })=> {
@@ -152,8 +155,8 @@ const COMPONENT_NAME = ({
       classes={classes}
       options={options}
       components={components}
-      value={value}
-      placeholder='Select Unit of Measure'
+      value={isControlled?controlledValue:stateValue}
+      placeholder='pick units'
       isClearable
       onChange={handleSelectChange}
     />
@@ -182,12 +185,14 @@ export default compose(
   withProps(props=>{
     return({
       options:getOptions(props.units),
+      isControlled: props.value===undefined?false:true,
+      controlledValue:props.value?{value:props.value,label:props.value}:null
     })
   }),
-  withState('value','setValue','Rankine'),
+  withState('stateValue','setStateValue',null),
   withHandlers({
     handleSelectChange:props=>(selectedUnit)=>{
-      props.setValue(selectedUnit)
+      !props.isControlled&&props.setStateValue(selectedUnit)
       props.onChange&&props.onChange(selectedUnit)
     }
   }),
