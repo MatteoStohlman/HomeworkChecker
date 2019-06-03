@@ -1,13 +1,20 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import {compose,withProps,withState,withHandlers} from 'recompose';
+import {compose,withState,withHandlers} from 'recompose';
 import { withStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import UnitPicker from 'Components/UnitPicker'
 import TextField from '@material-ui/core/TextField';
 import math from 'mathjs'
-const COMPONENT_NAME = ({
+import Icon from '@material-ui/core/Icon';
+
+const styles= {
+  row:{
+    backgroundColor:props=>props.studentError?'#FFE0E0':props.studentSuccess?'#DFEFD8':'white',
+  }
+}
+
+const ConversionRow = ({
   //PROPS
     //required
 
@@ -21,17 +28,19 @@ const COMPONENT_NAME = ({
     studentResponse,handleStudentResponseChange,
     studentError,setStudentError,
   //HANDLERS
-    calculateResult,
+    calculateResult,handleDelete,
   //OTHER
-    ...props
+    classes,...props
 })=> {
   return (
-    <TableRow>
+    <TableRow className={classes.row}>
       <TableCell>
         <TextField
           value={fromValue}
           onChange={(e)=>handleFromValueChange(e.target.value)}
           type="number"
+          InputProps={{disableUnderline:true}}
+          placeholder='value'
           InputLabelProps={{
             shrink: true,
           }}
@@ -45,10 +54,11 @@ const COMPONENT_NAME = ({
       </TableCell>
       <TableCell>
         <TextField
-          error={studentError}
           value={studentResponse}
           onChange={(e)=>handleStudentResponseChange(e.target.value)}
           type="number"
+          InputProps={{disableUnderline:true}}
+          placeholder='value'
           InputLabelProps={{
             shrink: true,
           }}
@@ -57,31 +67,41 @@ const COMPONENT_NAME = ({
       <TableCell>
         {calculateResult()}
       </TableCell>
+      <TableCell>
+        <Icon onClick={handleDelete}>delete</Icon>
+      </TableCell>
     </TableRow>
   )
 }
 
 export default compose(
-  withState('fromValue','setFromValue',null),
+  withState('fromValue','setFromValue',""),
   withState('fromUnit','setFromUnit',null),
   withState('fromType','setFromType',null),
   withState('toValue','setToValue',null),
   withState('toUnit','setToUnit',null),
   withState('toType','setToType',null),
-  withState('studentResponse','setStudentResponse',null),
+  withState('studentResponse','setStudentResponse',""),
   withState('studentError','setStudentError',false),
+  withState('studentSuccess','setStudentSuccess',false),
   withHandlers({
     calculateError:props=>(toValue)=>{
       let shouldShowError = false;
+      let shouldShowSuccess = false;
       if(toValue&&props.studentResponse){
         let roundedToValue = math.round(toValue,1)
         let roundedResp = math.round(props.studentResponse,1)
-        if(roundedToValue!=roundedResp){
+        if(roundedToValue!==roundedResp){
           shouldShowError=true
+        }else{
+          shouldShowSuccess=true
         }
       }
       if(props.studentError!==shouldShowError){
         props.setStudentError(shouldShowError)
+      }
+      if(props.studentSuccess!==shouldShowSuccess){
+        props.setStudentSuccess(shouldShowSuccess)
       }
     }
   }),
@@ -99,7 +119,6 @@ export default compose(
         props.calculateError(toValue)
         return toValue&&math.round(toValue,1)
       }else{
-        console.log('Invalid values for Calculation');
         return false
       }
     }
@@ -113,7 +132,7 @@ export default compose(
       }
       props.setFromType(selectedUnit.type)
       props.setFromUnit(selectedUnit.value)
-      if(selectedUnit.type!=props.toType){//From and to Unit types must match. Cannot convert temp to volume
+      if(selectedUnit.type!==props.toType){//From and to Unit types must match. Cannot convert temp to volume
         props.setToType(selectedUnit.type)
         props.setToUnit(null)
       }
@@ -132,6 +151,10 @@ export default compose(
     },
     handleStudentResponseChange:props=>(value)=>{
       props.setStudentResponse(value)
+    },
+    handleDelete:props=>()=>{
+      props.onDelete&&props.onDelete()
     }
-  })
-)(COMPONENT_NAME)
+  }),
+  withStyles(styles)
+)(ConversionRow)

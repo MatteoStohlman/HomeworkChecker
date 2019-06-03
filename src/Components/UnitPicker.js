@@ -6,7 +6,6 @@ import Select from 'react-select';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
-import { emphasize } from '@material-ui/core/styles/colorManipulator';
 
 const styles = theme => ({
   root: {
@@ -16,7 +15,7 @@ const styles = theme => ({
   input: {
     display: 'flex',
     padding: 0,
-    width:200,
+    width:150,
     height:32,
   },
   valueContainer: {
@@ -27,7 +26,7 @@ const styles = theme => ({
     overflow: 'hidden',
   },
   noOptionsMessage: {
-    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`,
+    padding: `${theme.spacing()}px ${theme.spacing(2)}px`,
   },
   singleValue: {
     fontSize: 16,
@@ -40,13 +39,13 @@ const styles = theme => ({
   paper: {
     position: 'absolute',
     zIndex: 1,
-    marginTop: theme.spacing.unit,
+    marginTop: theme.spacing(),
     left: 0,
     right: 0,
   },
   divider: {
-    height: theme.spacing.unit * 2,
-  },
+    height: theme.spacing(2),
+  }
 });
 function NoOptionsMessage(props) {
   return (
@@ -69,6 +68,7 @@ function Control(props) {
     <TextField
       InputProps={{
         inputComponent,
+        disableUnderline:true,
         inputProps: {
           className: props.selectProps.classes.input,
           inputRef: props.innerRef,
@@ -128,7 +128,11 @@ function Menu(props) {
     </Paper>
   );
 }
-const COMPONENT_NAME = ({
+
+function IndicatorsContainer(){
+  return null
+}
+const UnitPicker = ({
   //PROPS
     //required
       units,//temperature or volume
@@ -149,6 +153,7 @@ const COMPONENT_NAME = ({
     Placeholder,
     SingleValue,
     ValueContainer,
+    IndicatorsContainer
   };
   return (
     <Select
@@ -177,7 +182,7 @@ let getOptions = (filterByType=false) => {
     makeUnit('Gallons','Gal','volume'),
   ]
   if(filterByType&&filterByType!=='all'){
-    return units.filter((unit)=>unit.type==filterByType)
+    return units.filter((unit)=>unit.type===filterByType)
   }
   return units
 }
@@ -197,4 +202,4 @@ export default compose(
     }
   }),
   withStyles(styles)
-)(COMPONENT_NAME)
+)(UnitPicker)
