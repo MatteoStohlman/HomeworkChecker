@@ -167,19 +167,19 @@ const UnitPicker = ({
     />
   )
 }
-let makeUnit = (name,abbr,type) => ({name, abbr, type, label:name, value:name})
+let makeUnit = (label,value,type) => ({label, value, type, label:label, value:value})
 let getOptions = (filterByType=false) => {
   let units = [
-    makeUnit('Celsius','C','temperature'),
-    makeUnit('Kelvin','K','temperature'),
-    makeUnit('Fahrenheit','F','temperature'),
-    makeUnit('Rankine','R','temperature'),
-    makeUnit('Liters','L','volume'),
-    makeUnit('Tablespoons','Tbls','volume'),
-    makeUnit('Cubic-Inches','In3','volume'),
+    makeUnit('Celsius','Celsius','temperature'),
+    makeUnit('Kelvin','Kelvin','temperature'),
+    makeUnit('Fahrenheit','Fahrenheit','temperature'),
+    makeUnit('Rankine','Rankine','temperature'),
+    makeUnit('Liters','Liters','volume'),
+    makeUnit('Tablespoons','Tablespoons','volume'),
+    makeUnit('Cubic-Inches','cuin','volume'),
     makeUnit('Cups','Cups','volume'),
-    makeUnit('Cubic-Feet','Ft3','volume'),
-    makeUnit('Gallons','Gal','volume'),
+    makeUnit('Cubic-Feet','cuft','volume'),
+    makeUnit('Gallons','Gallons','volume'),
   ]
   if(filterByType&&filterByType!=='all'){
     return units.filter((unit)=>unit.type===filterByType)
