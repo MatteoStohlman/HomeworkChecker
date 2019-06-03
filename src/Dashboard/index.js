@@ -71,6 +71,6 @@ const UiPicker = ({
 
 export default compose(
   withState('showMultipleChecker','setShowMultipleChecker',false),
-  withState('showSingleChecker','setShowSingleChecker',true),
+  withState('showSingleChecker','setShowSingleChecker',false),
   withStyles(styles)
 )(UiPicker)
