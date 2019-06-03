@@ -47,10 +47,10 @@ const ConversionRow = ({
         />
       </TableCell>
       <TableCell>
-        <UnitPicker onChange={handleFromUnitSelect}/>
+        <UnitPicker onChange={handleFromUnitSelect} variant='bare'/>
       </TableCell>
       <TableCell>
-        <UnitPicker units={toType} value={toUnit} onChange={handleToUnitSelect}/>
+        <UnitPicker units={toType} value={toUnit} onChange={handleToUnitSelect} variant='bare'/>
       </TableCell>
       <TableCell>
         <TextField
