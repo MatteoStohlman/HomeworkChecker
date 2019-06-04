@@ -1,8 +1,6 @@
 import React from 'react';
 import {compose,withState,withHandlers} from 'recompose';
 import { withStyles } from '@material-ui/core/styles';
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
 import UnitPicker from 'Components/UnitPicker'
 import TextField from '@material-ui/core/TextField';
 import math from 'mathjs'
