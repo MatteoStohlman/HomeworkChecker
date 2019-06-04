@@ -1,7 +1,7 @@
 
 HomeworkChecker is a sample project demonstrating the use of React to implement a homework grading utility for teachers grading unit conversion assignments. 
 
-[https://converter.matteostohlman.com](Demo)
+[Click to See Demo](https://converter.matteostohlman.com)
 
 ## Available Scripts
 
