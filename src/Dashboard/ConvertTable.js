@@ -10,6 +10,8 @@ import Paper from '@material-ui/core/Paper';
 import Row from 'Dashboard/Row'
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
 
 const styles = {
   root: {
@@ -23,6 +25,11 @@ const styles = {
   },
   addRowButton:{
     marginTop:25,
+  },
+  tableSettings:{
+    position:'absolute',
+    bottom:0,
+    right:0,
   }
 }
 
@@ -35,11 +42,24 @@ const ConvertTable = ({
     //calculated
   //STATE
     rows,addRow,handleRemoveRow,
+    showResultCol,setShowResultCol,
   //OTHER
     classes,...props
 })=> {
   return (
     <Paper className={classes.root}>
+      <div className={classes.tableSettings}>
+        <FormControlLabel
+          control={
+            <Switch
+              checked={showResultCol}
+              onChange={(e,value)=>{setShowResultCol(value)}}
+              color="primary"
+            />
+          }
+          label='Show Result Column'
+        />
+      </div>
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
@@ -47,13 +67,13 @@ const ConvertTable = ({
             <TableCell>From Unit</TableCell>
             <TableCell>To Unit</TableCell>
             <TableCell>Student Response</TableCell>
-            <TableCell>Result</TableCell>
+            {showResultCol&&<TableCell>Result</TableCell>}
             <TableCell></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row)=>(
-            <Row key={row.id} onDelete={()=>handleRemoveRow(row.id)}/>
+            <Row key={row.id} onDelete={()=>handleRemoveRow(row.id)} withResult={showResultCol}/>
           ))}
         </TableBody>
       </Table>
@@ -66,6 +86,7 @@ const ConvertTable = ({
 
 export default compose(
   withState('rows','setRows',[{id:0}]),
+  withState('showResultCol','setShowResultCol',true),
   withHandlers({
     addRow:props=>(id=false)=>{
       props.setRows([...props.rows,{id:props.rows.length}])

@@ -19,7 +19,7 @@ const ConversionRow = ({
     //required
 
     //optional
-      variant='body1',
+      withResult,
     //calculated
 
   //STATE
@@ -32,6 +32,7 @@ const ConversionRow = ({
   //OTHER
     classes,...props
 })=> {
+  const result = calculateResult()
   return (
     <TableRow className={classes.row}>
       <TableCell>
@@ -64,9 +65,9 @@ const ConversionRow = ({
           }}
         />
       </TableCell>
-      <TableCell>
-        {calculateResult()}
-      </TableCell>
+      {withResult&&<TableCell>
+        {result}
+      </TableCell>}
       <TableCell>
         <Icon onClick={handleDelete}>delete</Icon>
       </TableCell>

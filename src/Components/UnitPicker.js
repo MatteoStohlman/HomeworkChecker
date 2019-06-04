@@ -167,7 +167,7 @@ const UnitPicker = ({
     />
   )
 }
-let makeUnit = (label,value,type) => ({label, value, type, label:label, value:value})
+let makeUnit = (label,value,type) => ({label, value, type})
 let getOptions = (filterByType=false) => {
   let units = [
     makeUnit('Celsius','Celsius','temperature'),
