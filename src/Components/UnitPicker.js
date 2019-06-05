@@ -15,7 +15,7 @@ const styles = theme => ({
   input: {
     display: 'flex',
     padding: 0,
-    width:150,
+    width:props=>props.variant=='bare'?150:'100%',
     height:32,
   },
   valueContainer: {
@@ -34,7 +34,8 @@ const styles = theme => ({
   placeholder: {
     position: 'absolute',
     left: 2,
-    fontSize: 16,
+    fontSize: 15,
+    color:'#A2A2A2'
   },
   paper: {
     position: 'absolute',
@@ -64,11 +65,17 @@ function inputComponent({ inputRef, ...props }) {
 }
 
 function Control(props) {
+  let variant = props.selectProps.variant
   return (
     <TextField
+      label={variant=='bare'?null:"Pick Unit"}
+      InputLabelProps={{
+        shrink: variant!=='bare',
+      }}
+      fullWidth={variant!=='bare'}
       InputProps={{
         inputComponent,
-        disableUnderline:true,
+        disableUnderline:props.selectProps.variant==='bare',
         inputProps: {
           className: props.selectProps.classes.input,
           inputRef: props.innerRef,
@@ -129,7 +136,7 @@ function Menu(props) {
   );
 }
 
-function IndicatorsContainer(){
+function IndicatorsContainer(props){
   return null
 }
 const UnitPicker = ({
@@ -137,7 +144,7 @@ const UnitPicker = ({
     //required
       units,//temperature or volume
     //optional//
-
+      variant='normal',
     //derived
       options,optionTypes,isControlled,controlledValue,
   //STATE
@@ -145,7 +152,7 @@ const UnitPicker = ({
   //OTHER
     classes,...props
 })=> {
-  const components = {
+  let components = {
     Control,
     Menu,
     NoOptionsMessage,
@@ -153,17 +160,18 @@ const UnitPicker = ({
     Placeholder,
     SingleValue,
     ValueContainer,
-    IndicatorsContainer
   };
+  if(variant==='bare'){components.IndicatorsContainer=IndicatorsContainer}
   return (
     <Select
       classes={classes}
       options={options}
       components={components}
       value={isControlled?controlledValue:stateValue}
-      placeholder='pick units'
       isClearable
+      placeholder={variant=='bare'?"pick unit":""}
       onChange={handleSelectChange}
+      variant={variant}
     />
   )
 }

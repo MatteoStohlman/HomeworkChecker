@@ -1,20 +1,23 @@
 import React from 'react';
 import {compose,withState,withHandlers} from 'recompose';
 import { withStyles } from '@material-ui/core/styles';
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
 import UnitPicker from 'Components/UnitPicker'
 import TextField from '@material-ui/core/TextField';
 import math from 'mathjs'
 import Icon from '@material-ui/core/Icon';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
-const styles= {
-  row:{
-    backgroundColor:props=>props.studentError?'#FFE0E0':props.studentSuccess?'#DFEFD8':'white',
+const styles={
+  root:{
+    padding:25,
+  },
+  spacing:{
+    height:18,
+    width:'100%',
   }
 }
 
-const ConversionRow = ({
+const SingleChecker = ({
   //PROPS
     //required
 
@@ -33,44 +36,40 @@ const ConversionRow = ({
     classes,...props
 })=> {
   return (
-    <TableRow className={classes.row}>
-      <TableCell>
-        <TextField
-          value={fromValue}
-          onChange={(e)=>handleFromValueChange(e.target.value)}
-          type="number"
-          InputProps={{disableUnderline:true}}
-          placeholder='value'
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-      </TableCell>
-      <TableCell>
-        <UnitPicker onChange={handleFromUnitSelect}/>
-      </TableCell>
-      <TableCell>
-        <UnitPicker units={toType} value={toUnit} onChange={handleToUnitSelect}/>
-      </TableCell>
-      <TableCell>
-        <TextField
-          value={studentResponse}
-          onChange={(e)=>handleStudentResponseChange(e.target.value)}
-          type="number"
-          InputProps={{disableUnderline:true}}
-          placeholder='value'
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-      </TableCell>
-      <TableCell>
-        {calculateResult()}
-      </TableCell>
-      <TableCell>
-        <Icon onClick={handleDelete}>delete</Icon>
-      </TableCell>
-    </TableRow>
+    <div className={classes.root}>
+      <TextField
+        fullWidth
+        value={fromValue}
+        onChange={(e)=>handleFromValueChange(e.target.value)}
+        type="number"
+        label='From Value'
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
+      <div className={classes.spacing}/>
+      <UnitPicker onChange={handleFromUnitSelect}/>
+      <div className={classes.spacing}/>
+      <UnitPicker units={toType} value={toUnit} onChange={handleToUnitSelect}/>
+      <div className={classes.spacing}/>
+      <TextField
+        fullWidth
+        error={studentError}
+        value={studentResponse}
+        onChange={(e)=>handleStudentResponseChange(e.target.value)}
+        type="number"
+        label='Student Response'
+        InputProps={{
+          startAdornment:studentError?
+            <InputAdornment position='start'><Icon>close</Icon></InputAdornment>
+            :
+            <InputAdornment position='start'><Icon>check</Icon></InputAdornment>
+        }}
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
+    </div>
   )
 }
 
@@ -157,4 +156,4 @@ export default compose(
     }
   }),
   withStyles(styles)
-)(ConversionRow)
+)(SingleChecker)
