@@ -66,7 +66,7 @@ exports[`basic ConversionChecker renders and snapshot 1`] = `
           className="MuiTableCell-root MuiTableCell-body"
         >
           <div
-            className="MuiFormControl-root MuiTextField-root"
+            className="MuiFormControl-root MuiTextField-root fromInput"
           >
             <div
               className="MuiInputBase-root MuiInput-root MuiInputBase-formControl MuiInput-formControl"
@@ -288,7 +288,7 @@ exports[`basic ConversionChecker renders and snapshot 1`] = `
           className="MuiTableCell-root MuiTableCell-body"
         >
           <div
-            className="MuiFormControl-root MuiTextField-root"
+            className="MuiFormControl-root MuiTextField-root toInput"
           >
             <div
               className="MuiInputBase-root MuiInput-root MuiInputBase-formControl MuiInput-formControl"

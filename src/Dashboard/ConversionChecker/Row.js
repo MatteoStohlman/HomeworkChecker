@@ -29,6 +29,7 @@ const ConversionRow = ({
     <TableRow className={classes.row}>
       <TableCell>
         <TextField
+          className='fromInput'
           value={fromValue}
           onChange={(e)=>handleFromValueChange(e.target.value)}
           type="number"
@@ -47,6 +48,7 @@ const ConversionRow = ({
       </TableCell>
       <TableCell>
         <TextField
+          className='toInput'
           value={studentResponse}
           onChange={(e)=>handleStudentResponseChange(e.target.value)}
           type="number"
