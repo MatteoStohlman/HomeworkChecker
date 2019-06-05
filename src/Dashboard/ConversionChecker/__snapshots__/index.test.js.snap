@@ -1,0 +1,370 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic ConversionChecker renders and snapshot 1`] = `
+<div
+  className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded ConvertTable-root-1"
+>
+  <table
+    className="MuiTable-root ConvertTable-table-2"
+  >
+    <thead
+      className="MuiTableHead-root"
+    >
+      <tr
+        className="MuiTableRow-root MuiTableRow-head"
+      >
+        <th
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-head"
+          scope="col"
+        >
+          From Value
+        </th>
+        <th
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-head"
+          scope="col"
+        >
+          From Unit
+        </th>
+        <th
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-head"
+          scope="col"
+        >
+          To Unit
+        </th>
+        <th
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-head"
+          scope="col"
+        >
+          Student Response
+        </th>
+        <th
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-head"
+          scope="col"
+        >
+          Result
+        </th>
+        <th
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-head"
+          scope="col"
+        />
+      </tr>
+    </thead>
+    <tbody
+      className="MuiTableBody-root"
+    >
+      <tr
+        className="MuiTableRow-root ConversionRow-row-50 ConversionRow-row-51"
+      >
+        <td
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-body"
+        >
+          <div
+            className="MuiFormControl-root MuiTextField-root"
+          >
+            <div
+              className="MuiInputBase-root MuiInput-root MuiInputBase-formControl MuiInput-formControl"
+              onClick={[Function]}
+            >
+              <input
+                aria-invalid={false}
+                className="MuiInputBase-input MuiInput-input"
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="value"
+                required={false}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </td>
+        <td
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-body"
+        >
+          <div
+            className=" css-2b097c-container"
+            onKeyDown={[Function]}
+          >
+            <div
+              className="MuiFormControl-root MuiTextField-root"
+            >
+              <div
+                className="MuiInputBase-root MuiInput-root MuiInputBase-formControl MuiInput-formControl"
+                onClick={[Function]}
+              >
+                <div
+                  aria-invalid={false}
+                  className="MuiInputBase-input MuiInput-input UnitPicker-input-86"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onMouseDown={[Function]}
+                  onTouchEnd={[Function]}
+                  required={false}
+                  type="text"
+                >
+                  <div
+                    className="UnitPicker-valueContainer-87"
+                  >
+                    <p
+                      className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary UnitPicker-placeholder-90"
+                    >
+                      pick units
+                    </p>
+                    <div
+                      className="css-1g6gooi"
+                    >
+                      <div
+                        className=""
+                        style={
+                          Object {
+                            "display": "inline-block",
+                          }
+                        }
+                      >
+                        <input
+                          aria-autocomplete="list"
+                          autoCapitalize="none"
+                          autoComplete="off"
+                          autoCorrect="off"
+                          disabled={false}
+                          id="react-select-2-input"
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          spellCheck="false"
+                          style={
+                            Object {
+                              "background": 0,
+                              "border": 0,
+                              "boxSizing": "content-box",
+                              "color": "inherit",
+                              "fontSize": "inherit",
+                              "label": "input",
+                              "opacity": 1,
+                              "outline": 0,
+                              "padding": 0,
+                              "width": "1px",
+                            }
+                          }
+                          tabIndex="0"
+                          type="text"
+                          value=""
+                        />
+                        <div
+                          style={
+                            Object {
+                              "height": 0,
+                              "left": 0,
+                              "overflow": "scroll",
+                              "position": "absolute",
+                              "top": 0,
+                              "visibility": "hidden",
+                              "whiteSpace": "pre",
+                            }
+                          }
+                        >
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-body"
+        >
+          <div
+            className=" css-2b097c-container"
+            onKeyDown={[Function]}
+          >
+            <div
+              className="MuiFormControl-root MuiTextField-root"
+            >
+              <div
+                className="MuiInputBase-root MuiInput-root MuiInputBase-formControl MuiInput-formControl"
+                onClick={[Function]}
+              >
+                <div
+                  aria-invalid={false}
+                  className="MuiInputBase-input MuiInput-input UnitPicker-input-86"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onMouseDown={[Function]}
+                  onTouchEnd={[Function]}
+                  required={false}
+                  type="text"
+                >
+                  <div
+                    className="UnitPicker-valueContainer-87"
+                  >
+                    <p
+                      className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary UnitPicker-placeholder-90"
+                    >
+                      pick units
+                    </p>
+                    <div
+                      className="css-1g6gooi"
+                    >
+                      <div
+                        className=""
+                        style={
+                          Object {
+                            "display": "inline-block",
+                          }
+                        }
+                      >
+                        <input
+                          aria-autocomplete="list"
+                          autoCapitalize="none"
+                          autoComplete="off"
+                          autoCorrect="off"
+                          disabled={false}
+                          id="react-select-3-input"
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          spellCheck="false"
+                          style={
+                            Object {
+                              "background": 0,
+                              "border": 0,
+                              "boxSizing": "content-box",
+                              "color": "inherit",
+                              "fontSize": "inherit",
+                              "label": "input",
+                              "opacity": 1,
+                              "outline": 0,
+                              "padding": 0,
+                              "width": "1px",
+                            }
+                          }
+                          tabIndex="0"
+                          type="text"
+                          value=""
+                        />
+                        <div
+                          style={
+                            Object {
+                              "height": 0,
+                              "left": 0,
+                              "overflow": "scroll",
+                              "position": "absolute",
+                              "top": 0,
+                              "visibility": "hidden",
+                              "whiteSpace": "pre",
+                            }
+                          }
+                        >
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-body"
+        >
+          <div
+            className="MuiFormControl-root MuiTextField-root"
+          >
+            <div
+              className="MuiInputBase-root MuiInput-root MuiInputBase-formControl MuiInput-formControl"
+              onClick={[Function]}
+            >
+              <input
+                aria-invalid={false}
+                className="MuiInputBase-input MuiInput-input"
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="value"
+                required={false}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </td>
+        <td
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-body"
+        />
+        <td
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-body"
+        >
+          <span
+            aria-hidden={true}
+            className="material-icons MuiIcon-root DeleteIcon-root-123"
+            onClick={[Function]}
+          >
+            delete
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button
+    className="MuiButtonBase-root MuiFab-root MuiFab-primary ConvertTable-addRowButton-3"
+    disabled={false}
+    id="addRowButton"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+  >
+    <span
+      className="MuiFab-label"
+    >
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </span>
+  </button>
+</div>
+`;

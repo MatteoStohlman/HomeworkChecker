@@ -6,14 +6,11 @@ import TableRow from '@material-ui/core/TableRow';
 import UnitPicker from 'Components/UnitPicker'
 import TextField from '@material-ui/core/TextField';
 import math from 'mathjs'
-import Icon from '@material-ui/core/Icon';
+import DeleteIcon from 'Components/DeleteIcon'
 
 const styles= {
   row:{
     backgroundColor:props=>props.studentError?'#FFE0E0':props.studentSuccess?'#DFEFD8':'white',
-  },
-  deleteIcon:{
-    cursor:'pointer'
   }
 }
 
@@ -64,7 +61,7 @@ const ConversionRow = ({
         {calculateResult()}
       </TableCell>
       <TableCell>
-        <Icon onClick={handleDelete} className={classes.deleteIcon}>delete</Icon>
+        <DeleteIcon onClick={handleDelete}/>
       </TableCell>
     </TableRow>
   )
