@@ -34,3 +34,17 @@ feature urls can be configured in [netlify](netlify.com) in the shape of:
 
 deploy preview urls are automatically generated for all branches and updated to reflect most recent github state. These can be found in netlify. Preview URLs are automatically generated in the form:
   ### `*branchName*--converter-matteostohlman.netlify.com`
+  
+ ## Libraries Used
+ 
+Mathjs - unit conversion
+https://mathjs.org/
+
+Recompose - react HOCs
+https://github.com/acdlite/recompose/blob/master/docs/API.md
+
+MaterialUI - components and layout 
+https://material-ui.com/
+
+React-Select - Autocomplete
+https://react-select.com/home
