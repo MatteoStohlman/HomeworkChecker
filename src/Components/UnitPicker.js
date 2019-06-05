@@ -145,7 +145,7 @@ const UnitPicker = ({
   //OTHER
     classes,...props
 })=> {
-  const components = {
+  const components = {//components passed to react-select to in material ui components in rendering autocomplete
     Control,
     Menu,
     NoOptionsMessage,
@@ -167,7 +167,7 @@ const UnitPicker = ({
     />
   )
 }
-let makeUnit = (label,value,type) => ({label, value, type, label:label, value:value})
+let makeUnit = (label,value,type) => ({label, value, type})//generator function for unit option
 let getOptions = (filterByType=false) => {
   let units = [
     makeUnit('Celsius','Celsius','temperature'),

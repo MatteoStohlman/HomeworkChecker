@@ -11,17 +11,13 @@ import Icon from '@material-ui/core/Icon';
 const styles= {
   row:{
     backgroundColor:props=>props.studentError?'#FFE0E0':props.studentSuccess?'#DFEFD8':'white',
+  },
+  deleteIcon:{
+    cursor:'pointer'
   }
 }
 
 const ConversionRow = ({
-  //PROPS
-    //required
-
-    //optional
-      variant='body1',
-    //calculated
-
   //STATE
     fromValue,handleFromUnitSelect,handleFromValueChange,
     toType,toUnit,handleToUnitSelect,
@@ -68,7 +64,7 @@ const ConversionRow = ({
         {calculateResult()}
       </TableCell>
       <TableCell>
-        <Icon onClick={handleDelete}>delete</Icon>
+        <Icon onClick={handleDelete} className={classes.deleteIcon}>delete</Icon>
       </TableCell>
     </TableRow>
   )
@@ -85,6 +81,7 @@ export default compose(
   withState('studentError','setStudentError',false),
   withState('studentSuccess','setStudentSuccess',false),
   withHandlers({
+    //Compare conversion "TO" value to Student Response value and set state
     calculateError:props=>(toValue)=>{
       let shouldShowError = false;
       let shouldShowSuccess = false;
@@ -106,6 +103,7 @@ export default compose(
     }
   }),
   withHandlers({
+    //Calculate Conversion "TO" value
     calculateResult:props=>(overrides)=>{
       let {fromValue,fromUnit,toUnit} = props
       if(overrides){
