@@ -44,7 +44,7 @@ const UiPicker = ({
     classes,...props
 })=> {
   const Picker = props =>(
-    <Paper className={classes.picker} elevation='5' onClick={props.onClick}>
+    <Paper className={classes.picker} elevation={5} onClick={props.onClick}>
       <Icon fontSize='large'>{props.icon}</Icon>
       <Typography variant="h5" gutterBottom>
         {props.children}

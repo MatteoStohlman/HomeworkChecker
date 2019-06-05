@@ -35,6 +35,7 @@ const SingleChecker = ({
   //OTHER
     classes,...props
 })=> {
+  const result = calculateResult();
   return (
     <div className={classes.root}>
       <TextField
