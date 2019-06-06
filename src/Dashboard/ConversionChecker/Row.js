@@ -1,5 +1,5 @@
 import React from 'react';
-import {compose,withState,withHandlers} from 'recompose';
+import {compose,withState,withHandlers,lifecycle} from 'recompose';
 import { withStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
@@ -17,7 +17,7 @@ const styles= {
 const ConversionRow = ({
   //STATE
     fromValue,handleFromUnitSelect,handleFromValueChange,
-    toType,toUnit,handleToUnitSelect,
+    toType,toUnit,toValue,handleToUnitSelect,
     studentResponse,handleStudentResponseChange,
     studentError,setStudentError,
   //HANDLERS
@@ -25,7 +25,7 @@ const ConversionRow = ({
   //OTHER
     classes,...props
 })=> {
-  let result = calculateResult();
+  //let result = calculateResult();
   return (
     <TableRow className={classes.row} data-cy='row'>
       <TableCell>
@@ -62,7 +62,7 @@ const ConversionRow = ({
       </TableCell>
       <TableCell>
         <div data-cy='result'>
-          {result}
+          {toValue}
         </div>
       </TableCell>
       <TableCell>
@@ -116,8 +116,11 @@ export default compose(
       if(fromValue&&fromUnit&&toUnit){
         let from = math.unit(fromValue,fromUnit.toLowerCase())
         let toValue = from.toNumber(toUnit.toLowerCase())
-        props.calculateError(toValue)
-        return toValue&&math.round(toValue,1)
+        let roundedValue = toValue&&math.round(toValue,1)
+        if(props.toValue!==roundedValue){
+          props.setToValue(roundedValue)
+        }
+        return roundedValue
       }else{
         return false
       }
@@ -154,6 +157,12 @@ export default compose(
     },
     handleDelete:props=>()=>{
       props.onDelete&&props.onDelete()
+    }
+  }),
+  lifecycle({
+    componentWillUpdate(){
+      let result = this.props.calculateResult()
+      this.props.calculateError(result)
     }
   }),
   withStyles(styles)
