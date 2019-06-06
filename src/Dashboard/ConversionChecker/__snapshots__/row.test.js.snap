@@ -19,6 +19,7 @@ exports[`ConversionTableRow basic Row renders and snapshot 1`] = `
           aria-invalid={false}
           className="MuiInputBase-input MuiInput-input"
           disabled={false}
+          name="fromValue"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}

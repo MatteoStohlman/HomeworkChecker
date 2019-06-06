@@ -64,6 +64,7 @@ function inputComponent({ inputRef, ...props }) {
 }
 
 function Control(props) {
+  console.log(props);
   return (
     <TextField
       InputProps={{
@@ -74,6 +75,7 @@ function Control(props) {
           inputRef: props.innerRef,
           children: props.children,
           ...props.innerProps,
+          ...props.selectProps.inputProps
         },
       }}
       {...props.selectProps.textFieldProps}
@@ -164,6 +166,7 @@ const UnitPicker = ({
       placeholder='pick units'
       isClearable
       onChange={handleSelectChange}
+      inputProps={props.inputProps}
     />
   )
 }

@@ -10,7 +10,7 @@ import DeleteIcon from 'Components/DeleteIcon'
 
 const styles= {
   row:{
-    backgroundColor:props=>props.studentError?'#FFE0E0':props.studentSuccess?'#DFEFD8':'white',
+    backgroundColor:props=>props.studentError?'rgb(255, 224, 224)':props.studentSuccess?'rgb(223, 239, 216)':'white',
   }
 }
 
@@ -25,15 +25,16 @@ const ConversionRow = ({
   //OTHER
     classes,...props
 })=> {
+  let result = calculateResult();
   return (
-    <TableRow className={classes.row}>
+    <TableRow className={classes.row} data-cy='row'>
       <TableCell>
         <TextField
           className='fromInput'
           value={fromValue}
           onChange={(e)=>handleFromValueChange(e.target.value)}
           type="number"
-          InputProps={{disableUnderline:true}}
+          InputProps={{disableUnderline:true,"data-cy":'fromValue'}}
           placeholder='value'
           InputLabelProps={{
             shrink: true,
@@ -41,10 +42,10 @@ const ConversionRow = ({
         />
       </TableCell>
       <TableCell>
-        <UnitPicker onChange={handleFromUnitSelect}/>
+        <UnitPicker inputProps={{"data-cy":'fromUnit'}} onChange={handleFromUnitSelect}/>
       </TableCell>
       <TableCell>
-        <UnitPicker units={toType} value={toUnit} onChange={handleToUnitSelect}/>
+        <UnitPicker inputProps={{"data-cy":'toUnit'}} units={toType} value={toUnit} onChange={handleToUnitSelect}/>
       </TableCell>
       <TableCell>
         <TextField
@@ -52,7 +53,7 @@ const ConversionRow = ({
           value={studentResponse}
           onChange={(e)=>handleStudentResponseChange(e.target.value)}
           type="number"
-          InputProps={{disableUnderline:true}}
+          InputProps={{disableUnderline:true,"data-cy":'guess'}}
           placeholder='value'
           InputLabelProps={{
             shrink: true,
@@ -60,7 +61,9 @@ const ConversionRow = ({
         />
       </TableCell>
       <TableCell>
-        {calculateResult()}
+        <div data-cy='result'>
+          {result}
+        </div>
       </TableCell>
       <TableCell>
         <DeleteIcon onClick={handleDelete}/>
