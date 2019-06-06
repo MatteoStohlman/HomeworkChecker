@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`basic UnitPicker renders and snapshot 1`] = `
+exports[`UnitPicker basic UnitPicker renders and snapshot 1`] = `
 <div
   className=" css-2b097c-container"
   onKeyDown={[Function]}

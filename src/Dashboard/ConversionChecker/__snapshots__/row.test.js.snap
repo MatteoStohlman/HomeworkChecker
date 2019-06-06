@@ -3,6 +3,7 @@
 exports[`ConversionTableRow basic Row renders and snapshot 1`] = `
 <tr
   className="MuiTableRow-root ConversionRow-row-1 ConversionRow-row-2"
+  data-cy="row"
 >
   <td
     aria-sort={null}
@@ -13,13 +14,13 @@ exports[`ConversionTableRow basic Row renders and snapshot 1`] = `
     >
       <div
         className="MuiInputBase-root MuiInput-root MuiInputBase-formControl MuiInput-formControl"
+        data-cy="fromValue"
         onClick={[Function]}
       >
         <input
           aria-invalid={false}
           className="MuiInputBase-input MuiInput-input"
           disabled={false}
-          name="fromValue"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -49,6 +50,7 @@ exports[`ConversionTableRow basic Row renders and snapshot 1`] = `
           <div
             aria-invalid={false}
             className="MuiInputBase-input MuiInput-input UnitPicker-input-53"
+            data-cy="fromUnit"
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
@@ -147,6 +149,7 @@ exports[`ConversionTableRow basic Row renders and snapshot 1`] = `
           <div
             aria-invalid={false}
             className="MuiInputBase-input MuiInput-input UnitPicker-input-53"
+            data-cy="toUnit"
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
@@ -236,6 +239,7 @@ exports[`ConversionTableRow basic Row renders and snapshot 1`] = `
     >
       <div
         className="MuiInputBase-root MuiInput-root MuiInputBase-formControl MuiInput-formControl"
+        data-cy="guess"
         onClick={[Function]}
       >
         <input
@@ -256,7 +260,11 @@ exports[`ConversionTableRow basic Row renders and snapshot 1`] = `
   <td
     aria-sort={null}
     className="MuiTableCell-root"
-  />
+  >
+    <div
+      data-cy="result"
+    />
+  </td>
   <td
     aria-sort={null}
     className="MuiTableCell-root"
