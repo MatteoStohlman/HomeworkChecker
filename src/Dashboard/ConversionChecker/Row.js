@@ -87,7 +87,7 @@ export default compose(
     calculateError:props=>(toValue)=>{
       let shouldShowError = false;
       let shouldShowSuccess = false;
-      if(toValue&&props.studentResponse){
+      if(toValue!==false&&props.studentResponse){
         let roundedToValue = math.round(toValue,1)
         let roundedResp = math.round(props.studentResponse,1)
         if(roundedToValue!==roundedResp){
