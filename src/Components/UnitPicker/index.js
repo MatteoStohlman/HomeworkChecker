@@ -64,7 +64,6 @@ function inputComponent({ inputRef, ...props }) {
 }
 
 function Control(props) {
-  console.log(props);
   return (
     <TextField
       InputProps={{
