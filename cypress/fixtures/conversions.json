@@ -1,0 +1,23 @@
+[
+  {
+    "fromValue":1,
+    "guess":1,
+    "fromUnit":"Celsius",
+    "toUnit":"Fahrenheit",
+    "isCorrect":false
+  },
+  {
+    "fromValue":1,
+    "guess":1,
+    "fromUnit":"Celsius",
+    "toUnit":"Celsius",
+    "isCorrect":true
+  },
+  {
+    "fromValue":32,
+    "guess":0,
+    "fromUnit":"Fahrenheit",
+    "toUnit":"Celsius",
+    "isCorrect":true
+  }
+]

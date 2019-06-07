@@ -74,6 +74,7 @@ function Control(props) {
           inputRef: props.innerRef,
           children: props.children,
           ...props.innerProps,
+          ...props.selectProps.inputProps
         },
       }}
       {...props.selectProps.textFieldProps}
@@ -164,6 +165,7 @@ const UnitPicker = ({
       placeholder='pick units'
       isClearable
       onChange={handleSelectChange}
+      inputProps={props.inputProps}
     />
   )
 }

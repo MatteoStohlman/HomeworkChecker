@@ -51,8 +51,8 @@ const ConvertTable = ({
           ))}
         </TableBody>
       </Table>
-      <Fab color="primary" onClick={addRow} className={classes.addRowButton}>
-        <AddIcon />
+      <Fab color="primary" onClick={addRow} className={classes.addRowButton} id='addRowButton'>
+        <AddIcon/>
       </Fab>
     </Paper>
   )
