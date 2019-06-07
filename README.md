@@ -36,10 +36,23 @@ deploy preview urls are automatically generated for all branches and updated to 
   ### `*branchName*--converter-matteostohlman.netlify.com`
 
  ## Testing
+ 
+### Jest+Enzyme
+Unit testing and snapshot testing is implemented using Jest+Enzyme. Test files take the form *componentName*.tests.js and can be found in the same directory as the component they are testing. Learn more about [Jest](https://jestjs.io/) and [Enzyme](https://airbnb.io/enzyme/docs/guides/jest.html).
 
-- Unit Testing with Jest+Enzyme
-- Snapshot Testing with Jest
-- E2E Testing with Cypress
+Use this command to run the Jest live tesing CLI. 
+  ##### `npm test`
+  
+  
+  
+### Cypress 
+End-To-End testing
+End-To-End (E2E) testing is implemented using Cypress. Test files can be found in the cypress directory in the root of this project. Cypress tests are browser tests that simulate end user interaction. Tests are run in a local environment using the Cypress GUI. Learn more about [Cypress here](https://www.cypress.io/)
+
+You can initiate Cypress with this command.
+  ##### `npm run cypress:open`
+  
+
 
 *see links for library documentation below*
 
@@ -60,5 +73,8 @@ https://react-select.com/home
 Cypress - E2E Testing
 https://www.cypress.io/
 
-Jest+Enzyme - Unit Testing
+Jest - Unit Testing
+https://jestjs.io/
+
+Enzyme - Unit Testing
 https://airbnb.io/enzyme/docs/guides/jest.html
