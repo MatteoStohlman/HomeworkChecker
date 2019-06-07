@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Delete Icon basic DeleteIcon renders and snapshot 1`] = `
+<span
+  aria-hidden={true}
+  className="material-icons MuiIcon-root DeleteIcon-root-1"
+  onClick={[Function]}
+>
+  delete
+</span>
+`;
+
+exports[`Delete Icon basic DeleteIcon renders and snapshot 2`] = `
+<span
+  aria-hidden={true}
+  className="material-icons MuiIcon-root DeleteIcon-root-1"
+  onClick={[Function]}
+>
+  close
+</span>
+`;
+
+exports[`Delete Icon basic DeleteIcon renders and snapshot 3`] = `
+<span
+  aria-hidden={true}
+  className="material-icons MuiIcon-root DeleteIcon-root-1"
+  onClick={[Function]}
+>
+  failing
+</span>
+`;

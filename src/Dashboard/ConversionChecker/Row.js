@@ -1,26 +1,23 @@
 import React from 'react';
-import {compose,withState,withHandlers} from 'recompose';
+import {compose,withState,withHandlers,lifecycle} from 'recompose';
 import { withStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import UnitPicker from 'Components/UnitPicker'
 import TextField from '@material-ui/core/TextField';
 import math from 'mathjs'
-import Icon from '@material-ui/core/Icon';
+import DeleteIcon from 'Components/DeleteIcon'
 
 const styles= {
   row:{
-    backgroundColor:props=>props.studentError?'#FFE0E0':props.studentSuccess?'#DFEFD8':'white',
-  },
-  deleteIcon:{
-    cursor:'pointer'
+    backgroundColor:props=>props.studentError?'rgb(255, 224, 224)':props.studentSuccess?'rgb(223, 239, 216)':'white',
   }
 }
 
 const ConversionRow = ({
   //STATE
     fromValue,handleFromUnitSelect,handleFromValueChange,
-    toType,toUnit,handleToUnitSelect,
+    toType,toUnit,toValue,handleToUnitSelect,
     studentResponse,handleStudentResponseChange,
     studentError,setStudentError,
   //HANDLERS
@@ -28,14 +25,16 @@ const ConversionRow = ({
   //OTHER
     classes,...props
 })=> {
+  //let result = calculateResult();
   return (
-    <TableRow className={classes.row}>
+    <TableRow className={classes.row} data-cy='row'>
       <TableCell>
         <TextField
+          className='fromInput'
           value={fromValue}
           onChange={(e)=>handleFromValueChange(e.target.value)}
           type="number"
-          InputProps={{disableUnderline:true}}
+          InputProps={{disableUnderline:true,"data-cy":'fromValue'}}
           placeholder='value'
           InputLabelProps={{
             shrink: true,
@@ -43,17 +42,18 @@ const ConversionRow = ({
         />
       </TableCell>
       <TableCell>
-        <UnitPicker onChange={handleFromUnitSelect}/>
+        <UnitPicker inputProps={{"data-cy":'fromUnit'}} onChange={handleFromUnitSelect}/>
       </TableCell>
       <TableCell>
-        <UnitPicker units={toType} value={toUnit} onChange={handleToUnitSelect}/>
+        <UnitPicker inputProps={{"data-cy":'toUnit'}} units={toType} value={toUnit} onChange={handleToUnitSelect}/>
       </TableCell>
       <TableCell>
         <TextField
+          className='toInput'
           value={studentResponse}
           onChange={(e)=>handleStudentResponseChange(e.target.value)}
           type="number"
-          InputProps={{disableUnderline:true}}
+          InputProps={{disableUnderline:true,"data-cy":'guess'}}
           placeholder='value'
           InputLabelProps={{
             shrink: true,
@@ -61,10 +61,12 @@ const ConversionRow = ({
         />
       </TableCell>
       <TableCell>
-        {calculateResult()}
+        <div data-cy='result'>
+          {toValue}
+        </div>
       </TableCell>
       <TableCell>
-        <Icon onClick={handleDelete} className={classes.deleteIcon}>delete</Icon>
+        <DeleteIcon onClick={handleDelete}/>
       </TableCell>
     </TableRow>
   )
@@ -85,7 +87,7 @@ export default compose(
     calculateError:props=>(toValue)=>{
       let shouldShowError = false;
       let shouldShowSuccess = false;
-      if(toValue&&props.studentResponse){
+      if(toValue!==false&&props.studentResponse){
         let roundedToValue = math.round(toValue,1)
         let roundedResp = math.round(props.studentResponse,1)
         if(roundedToValue!==roundedResp){
@@ -114,8 +116,11 @@ export default compose(
       if(fromValue&&fromUnit&&toUnit){
         let from = math.unit(fromValue,fromUnit.toLowerCase())
         let toValue = from.toNumber(toUnit.toLowerCase())
-        props.calculateError(toValue)
-        return toValue&&math.round(toValue,1)
+        let roundedValue = toValue&&math.round(toValue,1)
+        if(props.toValue!==roundedValue){
+          props.setToValue(roundedValue)
+        }
+        return roundedValue
       }else{
         return false
       }
@@ -152,6 +157,12 @@ export default compose(
     },
     handleDelete:props=>()=>{
       props.onDelete&&props.onDelete()
+    }
+  }),
+  lifecycle({
+    componentWillUpdate(){
+      let result = this.props.calculateResult()
+      this.props.calculateError(result)
     }
   }),
   withStyles(styles)
